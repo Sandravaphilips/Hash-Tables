@@ -51,7 +51,21 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        index = self._hash_mod(key)
+        linked_pair = self.storage[index]
+        # self.storage[index] = LinkedPair(key, value)
+        if linked_pair is None:
+            self.storage[index] = LinkedPair(key, value)
+            return
+
+        previous = linked_pair
+        while linked_pair:
+            if linked_pair.key == key:
+                linked_pair.value = value
+            previous = linked_pair
+            linked_pair =  linked_pair.next
+        
+        previous.next = LinkedPair(key, value)
 
 
 
@@ -63,7 +77,28 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # index = self._hash_mod(key)
+        # linked_pair = self.storage[index]
+        # previous = None
+        # linked_pair_index = index
+            
+        # while linked_pair and linked_pair.key != key:
+        #     previous = linked_pair
+        #     linked_pair = linked_pair.next
+        #     if previous is not None:
+        #         linked_pair_index += 1
+        
+        # if linked_pair is None:
+        #     print("There's no such key in our storage!")
+        #     return None
+        # else:
+        #     value = linked_pair.value
+        #     if previous is None:
+        #         linked_pair = None
+        #     else:
+        #         previous.next = previous.next.next
+        #     self.storage[linked_pair_index] = None
+        #     return value
 
 
     def retrieve(self, key):
@@ -74,7 +109,14 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # index = self._hash_mod(key)
+        # linked_pair = self.storage[index]
+        # while linked_pair and linked_pair.key != key:
+        #     linked_pair = linked_pair.next
+
+        # if linked_pair:
+        #     return linked_pair.value
+        # else: return None
 
 
     def resize(self):
@@ -103,11 +145,11 @@ if __name__ == "__main__":
     print(ht.retrieve("line_3"))
 
     # Test resizing
-    old_capacity = len(ht.storage)
-    ht.resize()
-    new_capacity = len(ht.storage)
+    # old_capacity = len(ht.storage)
+    # ht.resize()
+    # new_capacity = len(ht.storage)
 
-    print(f"\nResized from {old_capacity} to {new_capacity}.\n")
+    # print(f"\nResized from {old_capacity} to {new_capacity}.\n")
 
     # Test if data intact after resizing
     print(ht.retrieve("line_1"))
