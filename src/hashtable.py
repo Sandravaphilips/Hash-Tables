@@ -108,14 +108,14 @@ class HashTable:
 
         Fill this in.
         '''
-        # index = self._hash_mod(key)
-        # linked_pair = self.storage[index]
-        # while linked_pair and linked_pair.key != key:
-        #     linked_pair = linked_pair.next
+        index = self._hash_mod(key)
+        linked_pair = self.storage[index]
+        while linked_pair and linked_pair.key != key:
+            linked_pair = linked_pair.next
 
-        # if linked_pair:
-        #     return linked_pair.value
-        # else: return None
+        if linked_pair:
+            return linked_pair.value
+        else: return None
 
 
     def resize(self):
